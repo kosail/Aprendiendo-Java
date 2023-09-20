@@ -4,7 +4,7 @@ public class FPU2Prob6_DFPS {
     public static void main(String[] args) {
         int userNum = 0;
 
-        userNum = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un número de dos dígitos menor que 20: "));
+        userNum = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un número de dos dígitos menor que 20:"));
         
         if (-99<=userNum && userNum<=20) {
             if (userNum%2!=0) {
