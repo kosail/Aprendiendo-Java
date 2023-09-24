@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class FPU2Prob28_DFPS {
 
-    public static void inventoryPrinter(int[] itemPrices, String[] itemInventory) {
+    private static void inventoryPrinter(int[] itemPrices, String[] itemInventory) {
         /* El método debe ser static porque en la forma en la que esperamos que trabaje, y la forma de llamarlo, es comportamiento static.
         De no ser así, tendría yo que crear un nuevo objeto de tipo inventoryPrinter.
         */
