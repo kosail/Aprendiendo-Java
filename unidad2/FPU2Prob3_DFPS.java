@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero y determinar si  es negativo.
+
 import java.util.Scanner;
 
 public class FPU2Prob3_DFPS {

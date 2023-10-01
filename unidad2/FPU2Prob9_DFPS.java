@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob9_DFPS {

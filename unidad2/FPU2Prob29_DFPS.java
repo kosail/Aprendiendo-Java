@@ -1,3 +1,7 @@
+package unidad2;
+
+// Muestre el nombre del día de la semana que corresponde a un número proporcionado entre 1 y 7 inclusive, asociando el 1 al lunes y así sucesivamente hasta asociar el 7 al domingo.
+
 import java.util.Scanner;
 
 public class FPU2Prob29_DFPS {

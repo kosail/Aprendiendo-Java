@@ -1,3 +1,5 @@
+package ejerciciosEnClase;
+
 // Mostrar el nombre del día del mes correspondiente al entero proporcionado entre 1 y 12 inclusive, asociando el 1 a enero y así sucesivamente hasta asociar el 12 a diciembre
  
 

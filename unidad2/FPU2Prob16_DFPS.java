@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de tres digitos y determinar en qué posición está el dígito mayor.
+
 import java.util.Scanner;
 
 public class FPU2Prob16_DFPS {

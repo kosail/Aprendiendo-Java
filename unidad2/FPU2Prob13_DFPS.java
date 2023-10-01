@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer dos números enteros de dos digitos y determinar si la suma de los dos números origina un número par.
+
 import java.util.Scanner;
 public class FPU2Prob13_DFPS {
     public static void main(String[] args) {

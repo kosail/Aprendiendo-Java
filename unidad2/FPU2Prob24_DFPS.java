@@ -1,3 +1,7 @@
+package unidad2;
+
+// Se requiere determinar el costo que tendrá realizar una llamada telefónica con base en el tiempo que dura la llamada y el costo por minuto.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob24_DFPS {

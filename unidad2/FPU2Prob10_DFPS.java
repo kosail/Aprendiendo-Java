@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob10_DFPS {

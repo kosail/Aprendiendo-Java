@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer tres números enteros y mostrarlos ascendentemente.
+
 import java.util.Scanner;
 
 public class FPU2Prob19_DFPS {

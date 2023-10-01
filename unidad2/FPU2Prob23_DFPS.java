@@ -1,3 +1,7 @@
+package unidad2;
+
+// Se requiere determinar el área de un círculo, a partir de su radio.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob23_DFPS {

@@ -1,3 +1,7 @@
+package unidad2;
+
+// Un estacionamiento requiere determinar el cobro que debe aplicar a las personas que lo utilizan. Considere que el cobro es con base en las horas que lo utilizan y que las fracciones de hora se toman como completas.
+
 import java.util.Scanner;
 
 public class FPU2Prob21_DFPS {

@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de tres dígitos y determinar a cuánto es igual la suma de sus dígitos.
+
 import java.util.Scanner;
 
 public class FPU2Prob15_DFPS {

@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de dos dígitos menor que 20 y determinar si es primo
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob6_DFPS {

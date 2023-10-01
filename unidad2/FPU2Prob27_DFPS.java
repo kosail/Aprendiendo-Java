@@ -1,3 +1,7 @@
+package unidad2;
+
+//Muestre el nombre del mes que corresponde a un número proporcionado entre 1 y 12 inclusive, asociando el 1 a enero, el 2 a febrero y así sucesivamente hasta asociar el 12 a diciembre.
+
 import java.util.Scanner;
 
 public class FPU2Prob27_DFPS {

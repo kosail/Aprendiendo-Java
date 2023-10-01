@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob7_DFPS {

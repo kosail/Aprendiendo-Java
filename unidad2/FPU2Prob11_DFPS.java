@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer dos números enteros y determinar cuál es el mayor
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob11_DFPS {

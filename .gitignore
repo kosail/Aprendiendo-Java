@@ -1,3 +1,5 @@
 *.bluej
 README.TXT
 */README.TXT
+*/*.class
+*/*.ctxt

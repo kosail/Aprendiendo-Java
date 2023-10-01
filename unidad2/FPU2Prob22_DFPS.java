@@ -1,3 +1,7 @@
+package unidad2;
+
+// Se requiere determinar cuánto cobrar por trabajos de pintura. Considere que se cobra por m2.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob22_DFPS {

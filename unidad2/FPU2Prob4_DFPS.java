@@ -1,4 +1,6 @@
- 
+package unidad2;
+
+ // Leer un número entero de dos dígitos y determinar a cuánto es igual la suma de sus dígitos.
 
 import java.util.Scanner;
 

@@ -1,5 +1,6 @@
+package unidad2;
+
 // Leer un numero entero y determinar si es un numero terminado en 4
- 
 
 import java.util.Scanner;
 

@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de tres digitos y determinar si algún dígito es múltiplo de los otros.
+
 import java.util.Scanner;
 
 public class FPU2Prob17_DFPS {

@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de dos dígitos y determinar si sus dos dígitos son primos.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob8_DFPS {

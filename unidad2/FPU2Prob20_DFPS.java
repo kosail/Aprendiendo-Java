@@ -1,3 +1,7 @@
+package unidad2;
+
+// Una empresa importadora desea determinar cuántos dólares puede adquirir con equis cantidad de dinero mexicano.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob20_DFPS {

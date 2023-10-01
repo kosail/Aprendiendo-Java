@@ -1,3 +1,7 @@
+package unidad2;
+
+// Se desea determinar el total a pagar por un producto. Considere que si su precio es mayor o igual a $200 se le aplica un descuento de 20%, y si su precio es mayor a $100 pero menor a $200, el descuento es de 10%.
+
 import java.util.Scanner;
 
 public class FPU2Prob28_DFPS {

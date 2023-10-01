@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer dos números enteros de dos digitos y determinar si tienen digitos comunes.
+
 import javax.swing.JOptionPane;
 
 public class FPU2Prob12_DFPS {

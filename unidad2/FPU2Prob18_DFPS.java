@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer tres numeros enteros y determinar cuál es el mayor. Usar solamente dos variables
+
 import java.util.Scanner;
 
 public class FPU2Prob18_DFPS {

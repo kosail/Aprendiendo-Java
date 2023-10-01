@@ -1,3 +1,7 @@
+package unidad2;
+
+// Leer un número entero de dos dígitos y determinar si ambos dígitos son pares.
+
 import java.util.Scanner;
 
 public class FPU2Prob5_DFPS {
