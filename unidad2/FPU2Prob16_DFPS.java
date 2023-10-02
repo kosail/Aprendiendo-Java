@@ -17,9 +17,9 @@ public class FPU2Prob16_DFPS {
 
         scannedUserNum.close();
 
-        digit1 = (int) userNum/100;
-        digit2 = (int) (userNum%100)/10;
-        digit3 = userNum%10;
+        digit1 = Math.abs((int) userNum/100);
+        digit2 = Math.abs((int) (userNum%100)/10);
+        digit3 = Math.abs(userNum%10);
         numArray[0] = digit1; numArray[1] = digit2; numArray[2]=digit3;
         numCompare = numArray[0];
 
