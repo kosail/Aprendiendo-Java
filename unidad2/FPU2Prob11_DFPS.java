@@ -9,8 +9,13 @@ public class FPU2Prob11_DFPS {
         int userNumOne = 0, userNumTwo = 0;
         String resultsMessage = null;
 
-        userNumOne = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el primer número entero:"));
-        userNumTwo = Integer.parseInt(JOptionPane.showInputDialog("Ingresa el segundo número entero:"));
+        do {
+            userNumOne = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un número de dos dígitos:"));
+        } while(Math.abs(userNumOne)<10 || Math.abs(userNumOne)>99);
+
+        do {
+            userNumTwo = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un segundo número de dos dígitos:"));
+        } while(Math.abs(userNumTwo)<10 || Math.abs(userNumTwo)>99);
 
         if (userNumOne>userNumTwo) {
             resultsMessage = String.format("%d es mayor que %d.", userNumOne, userNumTwo);

@@ -10,7 +10,7 @@ public class FPU2Prob12_DFPS {
 
         do {
             userNum1 = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un número de dos dígitos:"));
-        } while(Math.abs(userNum1)<10 || Math.abs(userNum2)>99);
+        } while(Math.abs(userNum1)<10 || Math.abs(userNum1)>99);
 
         do {
             userNum2 = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un segundo número de dos dígitos:"));
