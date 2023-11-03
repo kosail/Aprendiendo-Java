@@ -51,7 +51,7 @@ public class methodsStorage {
     }
 
     public boolean thirteen() {
-        return ('Q' == 'q') ? true:false;
+        return ('Q' == 'q');
     }
 
     public int fourteen(int x, int y) {
