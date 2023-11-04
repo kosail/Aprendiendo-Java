@@ -21,9 +21,9 @@ public class DFPS_FPU4Prob23 {
 		if (presenceOFDuplicated) {
 			System.out.println("Existe al menos 1 número repetido.");
 		} else {
-			System.out.println("No hay números repetidos");
+			System.out.println("No hay números repetidos.");
 		}
-		
+
 		br.close();
 	}
 }
