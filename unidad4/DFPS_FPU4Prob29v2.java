@@ -4,12 +4,13 @@ package unidad4;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.util.ArrayDeque;
 
-public class DFPS_FPU4Prob29 {
+public class DFPS_FPU4Prob29v2 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int[] numbers = new int[8];
-		int quotient = 0, lastDigit=0;
+		int quotient = 0, lastDigit=0, actualNum=0;
 
 		System.out.println("Ingresa 9 números enteros, uno a la vez:");
 		for (int i=0;i<numbers.length;i++) {
@@ -17,30 +18,36 @@ public class DFPS_FPU4Prob29 {
 		}
 
 		for (int i=0;i<numbers.length;i++) {
-			System.out.println(numbers[i] + ": ");
+			ArrayDeque<Integer> numStack = new ArrayDeque<>();
 			quotient = numbers[i];
+
+			System.out.println(numbers[i] + ": ");
 
 			do {
 				lastDigit = quotient%10;
-				quotient/=10;
+				quotient/=10;	
+				numStack.push(lastDigit);
+			} while(quotient>0);
 
-				System.out.printf("   %d: ",lastDigit);
-				if (lastDigit>0) {
-					for (int j=1;j<=lastDigit;j++) {
+			while (!numStack.isEmpty()) {
+				actualNum = numStack.pop();
+
+				System.out.printf("   %d: ",actualNum);
+				if (actualNum>0) {
+					for (int j=1;j<=actualNum;j++) {
 						System.out.print(j + " ");
 					}
 				} else {
-					for (int j=lastDigit;j<=1;j++) {
+					for (int j=actualNum;j<=i;j++) {
 						System.out.print(j + " ");
 					}
 				}
-				
+
 				System.out.println();
-			} while(quotient>0);
+			}
 
 			System.out.println();
 		}
-
 
 		br.close();
 	}
