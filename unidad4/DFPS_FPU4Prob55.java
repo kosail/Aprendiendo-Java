@@ -8,7 +8,7 @@ import java.io.IOException;
 public class DFPS_FPU4Prob55 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int[] numbers = new int[8];
+		int[][] numbers = new int[4][3];
 
 		System.out.println("Ingresa 8 números enteros, uno a la vez:");
 		for (int i=0;i<numbers.length;i++) {
