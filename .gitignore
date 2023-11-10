@@ -1,6 +1,10 @@
-.vscode/*
+.idea/
+.vscode/
+bin/
 *.bluej
+*.class
+*.ctxt
+*.iml
 README.TXT
 */README.TXT
-*/*.class
-*/*.ctxt
+*.png
