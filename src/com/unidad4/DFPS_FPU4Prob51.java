@@ -12,7 +12,9 @@ public class DFPS_FPU4Prob51 {
 
 		System.out.println("Ingresa 8 números enteros, uno a la vez:");
 		for (int i=0;i<numbers.length;i++) {
-			numbers[i] = Integer.parseInt(br.readLine());
+			for (int j=0;j<numbers[i].length;j++) {
+				numbers[i][j] = Integer.parseInt(br.readLine());
+			}
 		}
 
 		br.close();

@@ -18,13 +18,13 @@ public class DFPS_FPU4Prob38 {
 		}
 
 		highestNum = lowestNum = numbers[0];
-		for (int i=0;i<numbers.length;i++) {
-			if (numbers[i]>highestNum) {
-				highestNum = numbers[i];
-			} else if (numbers[i]<lowestNum) {
-				lowestNum= numbers[i];
-			}
-		}
+        for (int number : numbers) {
+            if (number > highestNum) {
+                highestNum = number;
+            } else if (number < lowestNum) {
+                lowestNum = number;
+            }
+        }
 
 		if (((highestNum+lowestNum)/2)%2==0) {
 			System.out.println("La semisuma es par.");
