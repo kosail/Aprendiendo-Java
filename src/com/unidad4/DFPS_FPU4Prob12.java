@@ -1,5 +1,5 @@
 // Leer 12 números enteros, almacenarlos en un vector y calcular el promedio entero de los datos del vector.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

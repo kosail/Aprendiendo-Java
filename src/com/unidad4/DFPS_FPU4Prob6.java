@@ -1,5 +1,5 @@
 // Leer dos números enteros y almacenar en un vector los 5 primeros números comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

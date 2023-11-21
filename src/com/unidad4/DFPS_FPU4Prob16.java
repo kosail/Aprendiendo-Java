@@ -1,5 +1,5 @@
 // Leer 8 números enteros, almacenarlos en un vector y mostrar las posiciones del arreglo que contengan múltiplos de 4.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

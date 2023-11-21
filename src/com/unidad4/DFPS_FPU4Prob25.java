@@ -1,5 +1,5 @@
 // Leer 5 números enteros, almacenarlos en un vector y determinar cuántos de los números leídos son números terminados en 3.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

@@ -1,5 +1,5 @@
 // Leer 6 números enteros, almacenarlos en un vector y determinar cuántos números terminan en 7.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

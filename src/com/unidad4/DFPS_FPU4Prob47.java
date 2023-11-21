@@ -1,5 +1,5 @@
 // Leer 8 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números múltiplos de 10. No utilizar el número 10 en ninguna operación.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

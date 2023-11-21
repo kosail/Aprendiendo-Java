@@ -1,5 +1,5 @@
 // Leer 6 números enteros, almacenarlos en un vector y calcular el factorial a cada uno de los números leídos almacenándolos en otro vector.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

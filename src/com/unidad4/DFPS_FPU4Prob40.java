@@ -1,6 +1,6 @@
 // Leer 9 números enteros, almacenarlos en un vector y determinar cuántos números de los almacenados en dicho vector terminan en 15.
 
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

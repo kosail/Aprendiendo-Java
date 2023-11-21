@@ -1,5 +1,5 @@
 // Leer 9 números enteros, almacenarlos en un vector y determinar cuál es el número menor.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

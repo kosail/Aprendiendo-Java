@@ -1,5 +1,5 @@
 // Leer 4 números enteros, almacenarlos en un vector y determinar en qué posición está el número con más dígitos, si hay varios números con la máxima cantidad de dígitos, mostrar todas las posiciones del arreglo que los contienen
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

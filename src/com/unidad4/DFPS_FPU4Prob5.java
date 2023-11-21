@@ -1,5 +1,5 @@
 // Almacenar en un vector de 10 posiciones los 10 primeros números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.
-package unidad4;
+ 
 
 public class DFPS_FPU4Prob5 {
 	public static void main(String[] args) {

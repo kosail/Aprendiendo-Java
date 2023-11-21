@@ -1,5 +1,5 @@
 // Leer 10 números enteros, almacenarlos en un vector y determinar en qué posición está el menor número primo.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

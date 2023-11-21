@@ -1,5 +1,5 @@
 // Leer 7 números enteros, almacenarlos en un vector y determinar cuántos de los números almacenados en dicho vector pertenecen al rango de 100 a 900.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

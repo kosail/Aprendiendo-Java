@@ -1,5 +1,5 @@
 // Leer 6 números enteros, almacenarlos en un vector y determinar a cuántos es igual la suma del cuadrado de cada uno de los números leídos.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

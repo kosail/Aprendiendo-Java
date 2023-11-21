@@ -1,5 +1,5 @@
 // Leer 12 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número primo leído.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

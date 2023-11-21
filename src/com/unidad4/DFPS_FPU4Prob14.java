@@ -1,5 +1,5 @@
 // Leer 14 números enteros, almacenarlos en un vector y determinar cuántos datos dentro del vector son impares
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

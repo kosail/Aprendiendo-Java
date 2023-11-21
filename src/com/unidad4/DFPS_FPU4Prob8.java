@@ -1,5 +1,5 @@
 // Leer 9 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

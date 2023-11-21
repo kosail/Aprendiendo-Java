@@ -1,5 +1,5 @@
 //  Leer 5 números enteros, almacenarlos en un vector y determinar cuántos dígitos impares hay en los números leídos. Considere que un número puede tener varios dígitos impares.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

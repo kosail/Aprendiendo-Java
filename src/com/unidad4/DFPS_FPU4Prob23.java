@@ -1,5 +1,5 @@
 // Leer 3 números enteros, almacenarlos en un vector y determinar si existe al menos un número repetido.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

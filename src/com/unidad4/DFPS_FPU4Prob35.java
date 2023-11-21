@@ -1,5 +1,5 @@
 // Leer 6 números enteros, almacenarlos en un vector y determinar si el promedio entero de dichos números es un número primo.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

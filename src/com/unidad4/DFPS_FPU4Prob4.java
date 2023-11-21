@@ -1,5 +1,5 @@
 // Cargar un vector de 8 posiciones con los 8 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.
-package unidad4;
+ 
 
 public class DFPS_FPU4Prob4 {
 	public static void main(String[] args) {

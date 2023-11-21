@@ -1,5 +1,5 @@
 // Leer dos matrices de 4x5 enteras y determinar si la suma de los múltiplos de 5 de una de las matrices es mayor a la suma de los múltiplos de 5 de la otra matriz.
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

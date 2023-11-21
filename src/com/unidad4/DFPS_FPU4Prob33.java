@@ -1,6 +1,6 @@
 // Leer 8 números enteros, almacenarlos en un vector y determinar a cuánto es igual la suma de los dígitos pares de cada uno de los números leídos.
 
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

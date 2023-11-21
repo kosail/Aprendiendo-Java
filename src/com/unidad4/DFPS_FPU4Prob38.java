@@ -1,6 +1,6 @@
 // Leer 7 números enteros, almacenarlos en un vector y determinar si la semisuma entre el valor mayor y el valor menor es un número par. La semisuma es la mitad de la suma de dos o más números.
 
-package unidad4;
+ 
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
