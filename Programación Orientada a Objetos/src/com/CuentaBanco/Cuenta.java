@@ -1,6 +1,8 @@
 package com.CuentaBanco;
 
-public class Cuenta {
+import java.io.Serializable;
+
+public class Cuenta implements Serializable {
     private int numero;
     private String titular;
     private double saldo;
