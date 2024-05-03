@@ -1,6 +1,8 @@
 package com.Actividad19.AgendaElectronica;
 
-public class Contacto {
+import java.io.Serializable;
+
+public class Contacto implements Serializable {
 	private String nombre;
 	private int telefono;
 	private String direccion;
@@ -49,8 +51,8 @@ public class Contacto {
 	public String toString() {
 		return String.format("%s\t%d\t%s\t%d/%d",
 		nombre, telefono, direccion,
-		Integer.toString(fechaCumpleaños).substring(0, 2),
-		Integer.toString(fechaCumpleaños).substring(3)
+		fechaCumpleaños/100,
+		fechaCumpleaños%100
 		);
 	}
 }
