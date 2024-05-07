@@ -2,7 +2,6 @@ package com.Actividad19.AgendaElectronica;
 
 import java.io.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ConsultaContactos {
 	@SuppressWarnings("unchecked")
