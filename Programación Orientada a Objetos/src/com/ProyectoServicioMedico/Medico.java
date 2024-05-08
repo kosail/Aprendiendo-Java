@@ -29,6 +29,6 @@ public class Medico implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%d\t$s", cedula, nombre);
+		return String.format("%d\t%s", cedula, nombre);
 	}
 }

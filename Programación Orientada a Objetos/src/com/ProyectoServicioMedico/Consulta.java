@@ -59,6 +59,6 @@ public class Consulta implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("%s\t%s\t%d\t%d\t%d", paciente.getNombre(), medico.getNombre(), mes, dia, hora);
+		return String.format("%s\t%s\t%d/%d/t%d", paciente.getNombre(), medico.getNombre(), mes, dia, hora);
 	}
 }
