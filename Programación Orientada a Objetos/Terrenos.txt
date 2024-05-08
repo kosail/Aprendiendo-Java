@@ -1,0 +1,5 @@
+10.0	10.0	Zona Centro	250.25
+5.89	12.0	Zona Centro	57.225
+4.0	4.0	Bahía en Plaza Galerías, Saltillo	1700.0
+7.0	7.0	Casa pequeña ubicada a dos cuadras del TEC de Saltillo, Saltillo	59.59
+43.0	3.0	Saltillo Centro	160.01
