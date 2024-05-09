@@ -1,3 +1,8 @@
-1	Karla
-2	Cecilia
-3	Berumen
+11223344	Dra. Gabriela Morales
+22334455	Dr. Alejandro Cruz
+33445566	Dra. Valeria Hernandez
+44556677	Dr. Javier Gonzalez
+55667788	Dra. Ana Rodriguez
+77889900	Dra. Patricia Gomez
+88990011	Dr. Ricardo Flores
+99001122	Dra. Laura Martinez
