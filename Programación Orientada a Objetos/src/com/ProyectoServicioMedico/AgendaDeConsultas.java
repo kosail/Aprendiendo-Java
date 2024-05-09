@@ -43,9 +43,18 @@ import java.util.function.Consumer;
 public class AgendaDeConsultas {
 	public static void main(String[] args) {
 		// Load the medics and patients information or if it fails, throw a RuntimeException to ensure the program will be halted.
-		List<Medico> medics = retrieveMedicsData("Medicos.dat").orElseThrow(() -> new RuntimeException("Fallo en carga de información de los médicos."));
-		List<Paciente> patients = retrievePatientsData("Pacientes.dat").orElseThrow(() -> new RuntimeException("Fallo en carga de información de los pacientes."));		
-		List<Consulta> appointments = retrieveAppointmentsData("Consultas.dat").orElse(new ArrayList<>(50)); // Try to load previously created appointments. If it fails, then just create an empty ArrayList and continue
+		// We decided to use generics to have only one function (as it is the same exact code, with the cast type different for each method). Nevertheless if we use different methods that read the serialized objects and return that object casted to the specific need (Medico, Paciente or Consulta), Java will warn about unsafe cast thus need to use the SuppressWarnings annotation on every each method.
+		// Since WE ARE already handling the possibility of a ClassCastException and ClassNotFoundException on the generic method (in case the serialized object is not an ArrayList<?>), and even in the case the user inputs a serialized object that it is not an ArrayList<> of Medico, Paciente or Consulta, it will fail the cast in this main method and throw a RuntimeException making virtually impossible to run this program is no valid Medico, Paciente or Consulta information is provided.
+		// Enough safety guards make this possible and safe to use.
+		@SuppressWarnings("unchecked")
+		List<Medico> medics = (ArrayList<Medico>) retrieveData("Medicos.dat").orElseThrow(() -> new RuntimeException("Fallo en carga de información de los médicos."));
+		
+		@SuppressWarnings("unchecked")
+		List<Paciente> patients = (ArrayList<Paciente>) retrieveData("Pacientes.dat").orElseThrow(() -> new RuntimeException("Fallo en carga de información de los pacientes."));
+		
+		@SuppressWarnings("unchecked")
+		List<Consulta> appointments = (ArrayList<Consulta>) retrieveData("Consultas.dat").orElse(new ArrayList<>(50)); // Try to load previously created appointments. If it fails, then just create an empty ArrayList and continue
+		if (appointments.size() == 0) System.out.println("Se ha creado una nueva base de datos de consultas.\n");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // Needed for IO of the user
 
@@ -78,41 +87,14 @@ public class AgendaDeConsultas {
 		System.out.println("Gracias por usar nuestro sistema de agendado de citas.");
 	} // End of main method.
 
-	@SuppressWarnings("unchecked")
-	static Optional<List<Medico>> retrieveMedicsData(String fileName) {
+	static Optional<List<?>> retrieveData(String fileName) {
 		
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-			return Optional.of( (ArrayList<Medico>) ois.readObject() );			
+			return Optional.of( (ArrayList<?>) ois.readObject() );			
 		} catch (IOException e) {
 			System.err.println("El archivo " + fileName + "  no pudo ser leído o no existe.");	
 		} catch (ClassNotFoundException | ClassCastException e) {
-			System.err.println("El archivo " + fileName + " parece estar corrupto. Asegúrate que contenga información válida de médicos.");	
-		}
-		
-		return Optional.empty();
-	}
-
-	@SuppressWarnings("unchecked")
-	static Optional<List<Paciente>> retrievePatientsData(String fileName) {		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-			return Optional.of((ArrayList<Paciente>) ois.readObject());			
-		} catch (IOException e) {
-			System.err.println("El archivo " + fileName + "  no pudo ser leído o no existe.");
-		}  catch (ClassNotFoundException | ClassCastException e) {
-			System.err.println("El archivo " + fileName + " parece estar corrupto. Asegúrate que contenga información válida de médicos.");	
-		}
-		
-		return Optional.empty();
-	}
-
-	@SuppressWarnings("unchecked")
-	static Optional<List<Consulta>> retrieveAppointmentsData(String fileName) {		
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-			return Optional.of((ArrayList<Consulta>) ois.readObject());			
-		} catch (IOException e) {
-			System.err.println("El archivo " + fileName + "  no pudo ser leído o no existe.\nSe ha creado una nueva base de datos de consultas.");
-		}  catch (ClassNotFoundException | ClassCastException e) {
-			System.err.println("El archivo " + fileName + " parece estar corrupto. Asegúrate que contenga información válida de médicos.\nSe ha creado una nueva base de datos de consultas.");	
+			System.err.println("El archivo " + fileName + " parece estar corrupto. Asegúrate que contenga información válida.");	
 		}
 		
 		return Optional.empty();
