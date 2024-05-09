@@ -214,7 +214,7 @@ public class AgendaDeConsultas {
         System.out.println("Reporte de citas pendientes por médico\n");
         System.out.println("+---------------------------------+\n");
         int op = 0;
-        while (op < 1 && op > 2){
+        while (op < 1 || op > 2){
             System.out.println("Selecciona una opción: ");
             System.out.print("\t1) Ingresar número de cédula del médico\n\t2) Ingresar el nombre para buscar el médico\n\n>> ");
             op = Integer.parseInt(br.readLine());
@@ -230,7 +230,7 @@ public class AgendaDeConsultas {
                                 found = true;
                                 index = i;
                                 break;}}
-                        if (found=false){
+                        if (found==false){
                             System.out.println("El número de cédula ingresado no coincide con ningún médico registrado.\n");
                             op = 0;}
                         break;
