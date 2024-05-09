@@ -12,11 +12,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Optional;
+import java.util.function.BiConsumer;
 
 /*
 ! 6. Escribir una aplicación llamada “AgendaDeConsultas”. Que realice lo siguiente:
     * a) Esta aplicación debe leer los médicos y los pacientes de los respectivos archivos. 
-    TODO: b) Deberá leer los datos del teclado necesarios para agendar una cita; Nombre del Paciente, Nombre del Médico y la fecha correspondiente (Mes, día y hora). Los datos se leen mientras el nombre del paciente sea diferente de <enter>.
+    ! b) Deberá leer los datos del teclado necesarios para agendar una cita; Nombre del Paciente, Nombre del Médico y la fecha correspondiente (Mes, día y hora). Los datos se leen mientras el nombre del paciente sea diferente de <enter>.
 
     TODO: c) Generar un archivo con la información de la Agenda de Citas llamado “Consultas.dat”
 
@@ -42,12 +43,12 @@ public class AgendaDeConsultas {
 			try {
 				option = menu(br, option);
 				
-				switch(option) {
-					case 1 -> newAppointment(); // !Implementar
-					case 2 -> exportAppointmentsToDisk(); // !Implementar
-					case 3 -> reportAppointmentPerMedic(); // !Implementar
-					case 4 -> reportAppointmentPerPatience(); // !Implementar
-					case 5 -> reportAppointmentsPerDay(); // !Implementar
+				switch(option) { // Pattern matching will make things way easier for this specific case.
+					case 1 -> createNewAppointment(br, medics, patients, appointments); // !Implementar
+					case 2 -> exportAppointmentsToDisk(appointments); // !Implementar
+					case 3 -> reportAppointmentPerMedic(appointments); // !Implementar
+					case 4 -> reportAppointmentPerPatience(appointments); // !Implementar
+					case 5 -> reportAppointmentsPerDay(appointments); // !Implementar
 					default -> System.err.println("Has ingresado una opción no válida. Verifica la entrada que has proveído.\n");
 				}
 
@@ -96,6 +97,10 @@ public class AgendaDeConsultas {
 		System.out.print("\t1) Registrar citas nuevas\n\t2) Exportar todas las citas al almacenamiento.\n\t3) Reporte de citas pendientes por médico\n\t4) Historial de citas por paciente\n\t5) Busqueda de citas por día\n\n\t0) Salir\n\n>> ");
 		
 		return Integer.parseInt(br.readLine());
+	}
+
+	static void createNewAppointment(BufferedReader br, List<Medico> medics, List<Paciente> patients, List<Consulta> appointments) {
+		System.out.println("Ingresa el nombre del médico con quien se agendará la cita: ");
 	}
 
 }

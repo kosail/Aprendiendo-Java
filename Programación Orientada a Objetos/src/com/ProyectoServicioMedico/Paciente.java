@@ -2,77 +2,54 @@ package com.ProyectoServicioMedico;
 
 import java.io.Serializable;
 
-public class Paciente implements Serializable  {
-	private int expediente;
-	private String nombre;
-	private String celular;
-	private int edad;
-	private double peso;
-	private double altura;
+public class Paciente implements Serializable{
+    //atributos
+    private int expediente, edad;
+    private String nombre, celular;
+    private double peso, altura;
 
-	public Paciente (int expediente, String nombre, String celular, int edad, double peso, double altura) {
-		this.expediente = expediente;
-		this.nombre = nombre;
-		this.celular = celular;
-		this.edad = edad;
-		this.peso = peso;
-		this.altura = altura;
-	}
+    //constructor
+    public Paciente(int exp, String nom, String cel, int ed, double pe, double al){
+        expediente = exp;
+        nombre = nom;
+        celular = cel;
+        edad = ed;
+        peso = pe;
+        altura = al;}
 
-	public void setExpediente(int expediente) {
-		this.expediente = expediente;
-	}
+    //set
+    public void setExpediente(int e){
+        expediente = e;}
+    public void setNombre(String n){
+        nombre = n;}
+    public void setCelular(String c){
+        celular = c;}
+    public void setEdad(int e){
+        edad = e;}
+    public void setPeso(double p){
+        peso = p;}
+    public void setAltura(double a){
+        altura = a;}
+    
+    //get
+    public int getExpediente(){
+        return expediente;}
+    public String getNombre(){
+        return nombre;}
+    public String getCelular(){
+        return celular;    }
+    public int getEdad(){
+        return edad;}
+    public double getPeso(){
+        return peso;}
+    public double getAltura(){
+        return altura;}
+    
+    //Cálculos
+    public double calcularIMC(){
+        return peso/(altura*altura);}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
-	public void setPeso(double peso) {
-		this.peso = peso;
-	}
-
-	public void setAltura(double altura) {
-		this.altura = altura;
-	}
-
-	public int getExpediente() {
-		return expediente;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public String getCelular() {
-		return celular;
-	}
-
-	public int getEdad() {
-		return edad;
-	}
-
-	public double getPeso() {
-		return peso;
-	}
-
-	public double getAltura() {
-		return altura;
-	}
-
-	public double calcularIMC() {
-		return peso/(altura*altura);
-	}
-
-	@Override
-	public String toString() {
-		return String.format("%d\t%s\t%s\t%d\t%.2f\t%.2f", expediente, nombre, celular, edad, peso, altura);
-	}
+    //obtener datos
+    public String toString(){
+        return expediente + "\t" + nombre + "\t" + celular + "\t" + edad + "\t" + peso + "\t" + altura;}
 }
