@@ -1,27 +1,36 @@
 /*
- * Program description: Medical Appointments CLI System
+ * Program description: A simple medical appointments CLI system
+ * Version: 2024.0.2
  * Minimum Java version required: 21.0
  * 
- * Programmers: katsuko / kosail
+ * Programmers: katsuko	(https://github.com/Ka7suk0)
+ * 				kosail	(https://github.com/kosail)
  * Year: 2024
  */
 
 package com.ProyectoServicioMedico;
 
+// Imports to interact with the user
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
+// Read and write objects to/from disk
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 
+// To manage all information in memory
 import java.util.List;
 import java.util.ArrayList;
 
+// For functional programming methods
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /*
- 6. Escribir una aplicación llamada “AgendaDeConsultas”. Que realice lo siguiente:
+6. Escribir una aplicación llamada “AgendaDeConsultas”. Que realice lo siguiente:
     * a) Esta aplicación debe leer los médicos y los pacientes de los respectivos archivos. 
     ? b) Deberá leer los datos del teclado necesarios para agendar una cita; Nombre del Paciente, Nombre del Médico y la fecha correspondiente (Mes, día y hora). Los datos se leen mientras el nombre del paciente sea diferente de <enter>.
 
@@ -50,10 +59,10 @@ public class AgendaDeConsultas {
 				
 				switch(option) { // Pattern matching will make things way easier for this specific case.
 					case 1 -> createNewAppointment(br, medics, patients, appointments);
-					// case 2 -> exportAppointmentsToDisk(appointments); // !Implementar
+					case 2 -> exportAppointmentsToDisk.accept(appointments); // Note for myself: I really wanted to use pure functional interfaces, and I get that it's not good to mix programming paradigms, but welp, I'm just trying to put into practice what I'm currently learning and having fun in the process.
 					case 3 -> reportAppointmentPerMedic(br, appointments, medics);
 					// case 4 -> reportAppointmentPerPatience(br, appointments, patients); // !Implementar
-					// case 5 -> reportAppointmentsPerDay(br, appointments); // !Implementar
+					case 5 -> reportAppointmentsPerDay(br, appointments);
 					default -> System.err.println("Has ingresado una opción no válida. Verifica la entrada que has proveído.\n");
 				}
 
@@ -69,6 +78,7 @@ public class AgendaDeConsultas {
 		System.out.println("Gracias por usar nuestro sistema de agendado de citas.");
 	} // End of main method.
 
+	@SuppressWarnings("unchecked")
 	static Optional<List<Medico>> retrieveMedicsData(String fileName) {
 		
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
@@ -82,6 +92,7 @@ public class AgendaDeConsultas {
 		return Optional.empty();
 	}
 
+	@SuppressWarnings("unchecked")
 	static Optional<List<Paciente>> retrievePatientsData(String fileName) {		
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
 			return Optional.of((ArrayList<Paciente>) ois.readObject());			
@@ -94,6 +105,7 @@ public class AgendaDeConsultas {
 		return Optional.empty();
 	}
 
+	@SuppressWarnings("unchecked")
 	static Optional<List<Consulta>> retrieveAppointmentsData(String fileName) {		
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
 			return Optional.of((ArrayList<Consulta>) ois.readObject());			
@@ -107,11 +119,11 @@ public class AgendaDeConsultas {
 	}
 
 	static int menu(BufferedReader br, int option) throws IOException, NumberFormatException {
-		System.out.println("+---------------------------------+\n");
+		System.out.println("+------------------------------------+\n");
 		System.out.println("Control de citas médicas (v2024.0.2)");
-		System.out.println("+---------------------------------+\n");
+		System.out.println("+------------------------------------+\n");
 		System.out.println("Selecciona una opción: ");
-		System.out.print("\t1) Registrar citas nuevas\n\t2) Exportar todas las citas al almacenamiento. (PROXIMAMENTE)\n\t3) Reporte de citas pendientes por médico\n\t4) Historial de citas por paciente (PROXIMAMENTE)\n\t5) Busqueda de citas por día (PROXIMAMENTE)\n\n\t0) Salir\n\n>> ");
+		System.out.print("\t1) Registrar citas nuevas\n\t2) Exportar todas las citas al almacenamiento.\n\t3) Reporte de citas pendientes por médico (BETA)\n\t4) Historial de citas por paciente (PROXIMAMENTE)\n\t5) Busqueda de citas por día\n\n\t0) Salir\n\n>> ");
 		
 		return Integer.parseInt(br.readLine());
 	}
@@ -166,11 +178,11 @@ public class AgendaDeConsultas {
 
 		int day = Math.max(1, Math.min(safetyGuardDayLimit, Integer.parseInt(br.readLine()) )); // It will always store a number between 1 and the last day of the selected month. Good!
 
-		System.out.print("Ingresa la hora de la cita, en horario de 24 horas:\n\tEj: 8 para las 8:00 AM\n\t\t15 para las 3:00 PM\n\n>> ");
+		System.out.print("Ingresa la hora de la cita, en horario de 24 horas:\nEj: \t8 para las 8:00 AM\n\t15 para las 3:00 PM\n\n>> ");
 		int hour = Math.max(1, Math.min(23, Integer.parseInt(br.readLine()) )); // Safety guard to ensure that hour will always be between 1 and 23. We are a 24 hours hospital ya know.
 
-		if (appointments.add(new Consulta(selectedPatience, selectedMedic, continueWithAppointment, patientExpedientNum, day)) ) {
-			System.out.print("Cita agendada exitosamente. ¿Agendar una nueva cita?\n\t1) Sí, agendar una nueva cita.\n\t2) No, volver al menú principal.\n\n>> ");
+		if (appointments.add(new Consulta(selectedPatience, selectedMedic, month, day, hour)) ) {
+			System.out.print("Cita agendada exitosamente. ¿Agendar una nueva cita?\n   1) Sí, agendar una nueva cita.\n   2) No, volver al menú principal.\n\n>> ");
 			int doAddNewAppointment = Integer.parseInt(br.readLine());
 			
 			if (doAddNewAppointment == 1) createNewAppointment(br, medics, patients, appointments);
@@ -191,23 +203,44 @@ public class AgendaDeConsultas {
 				input = br.readLine(); // Get the index of the medic and reuse the input variable to store it.
 
 				// Cast "input" variable to int and get the medic in that position. Then, return that medic. If it fails to do it (e.g the user inputed a number with index of medic does not exist) then return a null.
-				return Optional.of( medics.get(Integer.parseInt(input) - 1) ).orElse(null);
+				Medico selectedMedic = null;
+				try {
+					selectedMedic = Optional.of( medics.get(Integer.parseInt(input) - 1) ).orElse(null);
+					return selectedMedic;
+
+				} catch (IndexOutOfBoundsException e) {
+					System.err.println("El médico seleccionado no existe. Regresando al menú principal.\n");
+				}
+
+				return null;
 			}
 	
 			// If the variable "input" was not empty, then it must contain the medic ID. If it fails, it will go directly to the catch NumberFormatException
 			int numericInput = Integer.parseInt(input);
 
-			return medics.stream()
+			Medico selectedMedic = medics.stream()
 						.filter(med -> med.getCedula() == numericInput)
 						.findFirst()
 						.orElse(null); // Return null if no matching medic found by ID.
 
+			if (selectedMedic == null) System.err.println("No se ha encontrado un médico que coincida con la solicitud. Regresando al menú principal\n");
 		} catch (NumberFormatException e) {
 			System.err.println("Ingresaste una opción no válida.\nNo ha sido posible seleccionar un médico. Regresando al menú principal.\n");
 		}
 
 		return null; // Return null for invalid input.
 	}
+
+	static Consumer<List<Consulta>> exportAppointmentsToDisk = (appointments) -> {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Consultas.dat"))) {
+			oos.writeObject(appointments);
+			System.out.println("Citas guardadas en el almacenamiento exitosamente.\n");
+		} catch (IOException e) {
+			System.err.println("No ha sido posible guardar un registro de las consultas debido a un error de lectura/escritura con el almacenamiento.\nImprimiendo en pantalla todas las citas:\n");
+
+			appointments.stream().forEach((a) -> System.out.println(a.toString()));
+		}
+	};
 
 	static void reportAppointmentPerMedic(BufferedReader br, List<Consulta> appointments, List<Medico> medics) throws IOException {
         System.out.println("+---------------------------------+\n");
@@ -272,4 +305,38 @@ public class AgendaDeConsultas {
             }
         }
     }
+
+	static void reportAppointmentsPerDay (BufferedReader br , List<Consulta> appointments) throws IOException, NumberFormatException {
+		System.out.println("+-----------------------------------+\n");
+        System.out.println("\tReporte de citas por día\n");
+        System.out.println("+-----------------------------------+\n");
+
+		// Getting the date of the desired appointment check.
+		// ? Note that this code is exactly the same as in the createNewAppointment method, but since it is just executed twice it might not be necessary to be modularized as a method, since it may increase the difficulty of comprehension of the code. We will stick to the simple and old way to use again this code.
+
+		System.out.print("Ingresa el número del mes: ");
+		int month = Math.max(1, Math.min(12, Integer.parseInt(br.readLine()))); // Same as the createNewAppointment method, we're using Math.max and min as safety guards to always get a value between 1 and 12
+
+		System.out.print("Ingresa el número del día: ");
+		int safetyGuardDayLimit = 31;
+		if (month == 4 || month == 6 || month == 9 || month == 11) safetyGuardDayLimit = 30;
+		if (month == 2) safetyGuardDayLimit = 28;
+
+		int day = Math.max(1, Math.min(safetyGuardDayLimit, Integer.parseInt(br.readLine()) )); // It will always store a number between 1 and the last day of the selected month. Good!
+
+		 // Get the total amount of appointments registered for the specified date
+		int totalOfAppointments = (int) appointments.stream().filter((a) -> a.getMes() == month && a.getDia() == day).count();
+		if (totalOfAppointments == 0) { // If there are no appointments, return to main menu.
+			System.out.printf("\nNo hay citas registradas para el mes %s día %d.\n", month, day);
+			return;
+		}
+
+		System.out.printf("\nCitas registradas para el mes %s día %d:\n", month, day);
+		System.out.println("Paciente\tMédico\tMes\tDia\tHora");
+		appointments.stream()
+					.filter((a) -> a.getMes() == month && a.getDia() == day)
+					.forEach((a) -> System.out.println(a.toString()));
+
+		System.out.printf("\nTotal de citas registradas para el día: %d\n\n", totalOfAppointments);
+	} 
 }
