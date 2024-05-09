@@ -100,7 +100,13 @@ public class AgendaDeConsultas {
 	}
 
 	static void createNewAppointment(BufferedReader br, List<Medico> medics, List<Paciente> patients, List<Consulta> appointments) {
-		System.out.println("Ingresa el nombre del médico con quien se agendará la cita: ");
+		System.out.print("Ingresa el nombre del médico con quien se agendará la cita.\nMédicos disponibles:\n");
+		
+		for (int i = 0; i<medics.size(); i++) { // Make the user select the desired medic from the available list to avoid typing errors from the user when searching for name or Medic ID
+			System.out.printf("%d) %s\n", i + 1, medics.get(i).getNombre());
+		}
+
+		
 	}
 
 }
