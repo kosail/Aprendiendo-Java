@@ -70,7 +70,7 @@ public class AgendaDeConsultas {
 					case 1 -> createNewAppointment(br, medics, patients, appointments);
 					case 2 -> exportAppointmentsToDisk.accept(appointments); // Note for myself: I really wanted to use pure functional interfaces, and I get that it's not good to mix programming paradigms, but welp, I'm just trying to put into practice what I'm currently learning and having fun in the process.
 					case 3 -> reportAppointmentPerMedic(br, appointments, medics);
-					// case 4 -> reportAppointmentPerPatience(br, appointments, patients); // !Implementar
+					case 4 -> reportAppointmentPerPatience(br, appointments, patients);
 					case 5 -> reportAppointmentsPerDay(br, appointments);
 					default -> System.err.println("Has ingresado una opción no válida. Verifica la entrada que has proveído.\n");
 				}
@@ -105,7 +105,7 @@ public class AgendaDeConsultas {
 		System.out.println("Control de citas médicas (v2024.0.2)");
 		System.out.println("+------------------------------------+\n");
 		System.out.println("Selecciona una opción: ");
-		System.out.print("\t1) Registrar citas nuevas\n\t2) Exportar todas las citas al almacenamiento.\n\t3) Reporte de citas pendientes por médico (BETA)\n\t4) Historial de citas por paciente (PROXIMAMENTE)\n\t5) Busqueda de citas por día\n\n\t0) Salir\n\n>> ");
+		System.out.print("\t1) Registrar citas nuevas\n\t2) Exportar todas las citas al almacenamiento.\n\t3) Reporte de citas pendientes por médico\n\t4) Historial de citas por paciente\n\t5) Busqueda de citas por día\n\n\t0) Salir\n\n>> ");
 		
 		return Integer.parseInt(br.readLine());
 	}
@@ -229,15 +229,15 @@ public class AgendaDeConsultas {
         System.out.println("Reporte de citas pendientes por médico\n");
         System.out.println("+---------------------------------+\n");
         int op = 0;
+        int index = -1;
         while (op < 1 || op > 2){
             System.out.println("Selecciona una opción: ");
             System.out.print("\t1) Ingresar número de cédula del médico\n\t2) Ingresar el nombre para buscar el médico\n\n>> ");
             op = Integer.parseInt(br.readLine());
             if (op >= 1 && op <= 2){
-                int index = -1;
                 switch (op) {
                     case 1:
-                        System.out.println("Número de cédula:\n\n>> ");
+                        System.out.print("\nNúmero de cédula:\n\n>> ");
                         int cedula = Integer.parseInt(br.readLine());
                         boolean found = false;
                         for (int i = 0; i < medics.size(); i++) {
@@ -246,47 +246,120 @@ public class AgendaDeConsultas {
                                 index = i;
                                 break;}}
                         if (found==false){
-                            System.out.println("El número de cédula ingresado no coincide con ningún médico registrado.\n");
+                            System.out.println("\nEl número de cédula ingresado no coincide con ningún médico registrado.\n-----------------------------\n");
                             op = 0;}
-                        break;
+                        continue;
                     case 2:
-                        System.out.println("Buscar:\n\n>> ");
+                        System.out.print("\nBuscar:\n\n>> ");
                         String nombre = br.readLine();
                         List<Integer> busqueda = new ArrayList<>();
                         int num=1;
                         for (int i = 0; i < medics.size(); i++) {
-                            if(medics.get(i).getNombre().contains(nombre)){
+                            if(medics.get(i).getNombre().toLowerCase().contains(nombre.toLowerCase())){
                                 System.out.println("\t" + num + ") " + medics.get(i).getNombre());
                                 num++;
                                 busqueda.add(i);}}
-                        if (medics.size()>0){
+                        if (busqueda.size()>0){
+                            System.out.print(">> ");
                             int input = Integer.parseInt(br.readLine());
-                            if (busqueda.contains(input)){
-                                index = input;
+                            if (input >0 && input <=busqueda.size()){
+                                index = busqueda.get(input-1);
                             }else{
-                                System.out.println("Has ingresado una opción no válida.\n");
+                                System.out.println("\nHas ingresado una opción no válida.\n");
                                 op = 0;
-                                break;}
+                                continue;}
                         }else{
-                            System.out.println("No se encontró ningún médico que coincida con \""+nombre+"\"\n");
+                            System.out.println("\nNo se encontró ningún médico que coincida con \""+nombre+"\"\n");
                             op = 0;}
-                        break;}
-                boolean hayCitas=false;
-                for (int i = 0; i < appointments.size(); i++) {
-                    if (appointments.get(i).getMedico().getCedula() == medics.get(index).getCedula()){
-                        if(!hayCitas){
-                            System.out.println("---------------------------");
-                            System.out.println("Fecha\tHora\tPaciente");
-                            System.out.println("---------------------------");}
-                        System.out.println(appointments.get(i).getDia() + "/" + appointments.get(i).getMes() + "\t" + appointments.get(i).getHora() + "\t" + appointments.get(i).getPaciente().getNombre());
-                        hayCitas=true;}}
-                if(!hayCitas){
-                    System.out.println("No se encontraron citas agendadas para el médico " + medics.get(index).getNombre() + "\n");}
+                        continue;}
             }else{
                 System.out.println("Has ingresado una opción no válida. Verifica la entrada que has proveído.\n");
             }
         }
+        boolean hayCitas=false;
+                for (int i = 0; i < appointments.size(); i++) {
+                    if (appointments.get(i).getMedico().getCedula() == medics.get(index).getCedula()){
+                        if(!hayCitas){
+                            System.out.println("--------------------------------");
+                            System.out.println("Fecha\tHora\tPaciente");
+                            System.out.println("--------------------------------");}
+                        System.out.println(appointments.get(i).getDia() + "/" + appointments.get(i).getMes() + "\t" + appointments.get(i).getHora() + "\t" + appointments.get(i).getPaciente().getNombre());
+                        hayCitas=true;}}
+                if(!hayCitas){
+                    System.out.println("\nNo se encontraron citas agendadas para " + medics.get(index).getNombre() + "\n");
+                }else{
+                    System.out.println("--------------------------------\n");
+                }
     }
+
+	static void reportAppointmentPerPatience(BufferedReader br, List<Consulta> appointments, List<Paciente> patients) throws IOException {
+        System.out.println("+---------------------------------+\n");
+        System.out.println("Reporte de citas por paciente\n");
+        System.out.println("+---------------------------------+\n");
+        int op = 0;
+        int index = -1;
+        while (op < 1 || op > 2){
+            System.out.println("Selecciona una opción: ");
+            System.out.print("\t1) Ingresar número de expediente del paciente\n\t2) Ingresar el nombre para buscar el paciente\n\n>> ");
+            op = Integer.parseInt(br.readLine());
+            if (op >= 1 && op <= 2){
+                switch (op) {
+                    case 1:
+                        System.out.print("\nNúmero de expediente:\n\n>> ");
+                        int expediente = Integer.parseInt(br.readLine());
+                        boolean found = false;
+                        for (int i = 0; i < patients.size(); i++) {
+                            if(patients.get(i).getExpediente() == expediente){
+                                found = true;
+                                index = i;
+                                break;}}
+                        if (found==false){
+                            System.out.println("\nEl número de expediente ingresado no coincide con ningún paciente registrado.\n-----------------------------\n");
+                            op = 0;}
+                        continue;
+                    case 2:
+                        System.out.print("\nBuscar:\n\n>> ");
+                        String nombre = br.readLine();
+                        List<Integer> busqueda = new ArrayList<>();
+                        int num=1;
+                        for (int i = 0; i < patients.size(); i++) {
+                            if(patients.get(i).getNombre().toLowerCase().contains(nombre.toLowerCase())){
+                                System.out.println("\t" + num + ") " + patients.get(i).getNombre());
+                                num++;
+                                busqueda.add(i);}}
+                        if (busqueda.size()>0){
+                            System.out.print(">> ");
+                            int input = Integer.parseInt(br.readLine());
+                            if (input >0 && input <=busqueda.size()){
+                                index = busqueda.get(input-1);
+                            }else{
+                                System.out.println("\nHas ingresado una opción no válida.\n");
+                                op = 0;
+                                continue;}
+                        }else{
+                            System.out.println("\nNo se encontró ningún paciente que coincida con \""+nombre+"\"\n");
+                            op = 0;}
+                        continue;}
+            }else{
+                System.out.println("Has ingresado una opción no válida. Verifica la entrada que has proveído.\n");
+            }
+        }
+        boolean hayCitas=false;
+                for (int i = 0; i < appointments.size(); i++) {
+                    if (appointments.get(i).getPaciente().getExpediente() == patients.get(index).getExpediente()){
+                        if(!hayCitas){
+                            System.out.println("--------------------------------");
+                            System.out.println("Fecha\tHora\tMédico");
+                            System.out.println("--------------------------------");}
+                        System.out.println(appointments.get(i).getDia() + "/" + appointments.get(i).getMes() + "\t" + appointments.get(i).getHora() + "\t" + appointments.get(i).getMedico().getNombre());
+                        hayCitas=true;}}
+                if(!hayCitas){
+                    System.out.println("\nNo se encontraron citas agendadas para " + patients.get(index).getNombre() + "\n");
+                }else{
+                    System.out.println("--------------------------------\n");
+                }
+    }
+
 
 	static void reportAppointmentsPerDay (BufferedReader br , List<Consulta> appointments) throws IOException, NumberFormatException {
 		System.out.println("+-----------------------------------+\n");
