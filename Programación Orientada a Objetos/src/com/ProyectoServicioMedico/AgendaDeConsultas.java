@@ -386,7 +386,9 @@ public class AgendaDeConsultas {
 			return;
 		}
 
+		System.out.println("\n+---------------------------------------+");
 		System.out.printf("\nCitas registradas para el mes %s día %d:\n", month, day);
+		System.out.println("+---------------------------------------+\n");
 		System.out.println("Paciente\tMédico\tMes\tDia\tHora");
 		appointments.stream()
 					.filter((a) -> a.getMes() == month && a.getDia() == day)
