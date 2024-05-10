@@ -29,17 +29,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-/*
-6. Escribir una aplicación llamada “AgendaDeConsultas”. Que realice lo siguiente:
-    * a) Esta aplicación debe leer los médicos y los pacientes de los respectivos archivos. 
-    ? b) Deberá leer los datos del teclado necesarios para agendar una cita; Nombre del Paciente, Nombre del Médico y la fecha correspondiente (Mes, día y hora). Los datos se leen mientras el nombre del paciente sea diferente de <enter>.
-
-    c) Generar un archivo con la información de la Agenda de Citas llamado “Consultas.dat”
-    * d) Dado un nombre de un médico (leerlo del teclado) generar un reporte con la información correspondiente a todas sus citas agendadas.
-	e) Dado el nombre de un paciente reportar que médicos y en que fechas lo han consultado.
-	f) Generar un listado con las consultas de un dia en particular. Solicitar el día desde el teclado.
- */
-
 public class AgendaDeConsultas {
 	public static void main(String[] args) {
 		// Load the medics and patients information or if it fails, throw a RuntimeException to ensure the program will be halted.
